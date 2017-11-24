@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>The Flow Game</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+ 
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+		<!-- Our JavaScript -->
+ 		<script src="objects.js"></script>
+    <script src="content.js"></script>
+    <script src="prototypes.js"></script>
+    <script src="game_service.js"></script>
+    <script src="board_service.js"></script>
+    <script src="generate_service.js"></script>
+    <script src="script.js"></script>
+
+    <!-- ****************** Content Starts Here ******************-->
+
+<!-- Parent Wrap Start -->
+    <div class=".container-fluid"> 
+   
+   		<!-- Heading Row Vertically Center Contents -->
+      <div class="row header border_bottom white">
+
+        <!-- Game Stats -->
+      	<div class="col-3">
+      		<h1>
+	          Game Number: <span id="gameNumberCounter" class="replace"></span><br>
+         </h1>
+        </div>
+
+        <div class="col-3">
+      		<h1>
+	         	Total Cards: <span id="totalCardsCounter" class="replace"></span>
+         </h1>
+        </div>
+
+        <div class="col-2">
+      		<h1>
+						Day #: <span id="dayNumberCounter" class="replace"></span><br>
+         </h2>
+        </div>
+
+         <div class="col-2">
+      		<h1>
+						<span id="whoseTurn" class="replace"></span><br>
+         </h1>
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-2">
+        	<!-- Modal Button -->
+  		    <button type="button" class="btn btn-primary btn-sm right" id="startGame" data-toggle="modal" data-target="#startGameModal">
+            Start Game
+          </button>
+
+          <!-- Roll Dice Button -->
+          <button type="button" class="btn btn-primary btn-sm right" id="rollButton" data-toggle="modal" data-target="#rollModal">
+            Roll Dice
+          </button>
+
+          <!-- End Turn Button -->
+          <button type="button" class="btn btn-primary btn-sm right" id="endTurn" data-toggle="modal" data-target="#endTurnModal">
+            Start Next Day
+          </button>
+
+          <!-- Organize Button -->
+          <button type="button" class="btn btn-primary btn-sm right" id="organize"">
+            Organize Work
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Body Row -->
+      <div class="row"> 
+
+        <!-- Big Column 1 -->
+        <div class="col-sm-2">
+
+          <!-- Title Row -->
+          <div class="row"> 
+            <div class="col-sm-12 backlog white" id="backlogTitle">
+              <h2>Backlog: <span class="replace"></span></h2>
+            </div>
+          </div>
+
+          <!-- Body Row -->
+          <div class="row border_top">
+            <div class="col-sm-12 overfow" id="backlog">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Big Column 2 -->
+        <div class="col-sm-10 border_left" id="bigColumn2">
+
+          <!-- Title Row -->
+          <div class="row white">
+
+            <div class="col-sm-3" id="devWIPTitle">
+              <h2>Dev WIP: <span class="replace"></span></h2>
+            </div>
+
+            <div class="col-sm-3 border_left_dashed" id="devDoneTitle">
+              <h2>Dev Done: <span class="replace"></span></h2>
+            </div>
+            
+            <div class="col-sm-3 border_left_dashed" id="qaWIPTitle">
+              <h2>QA WIP: <span class="replace"></span></h2>
+            </div>
+            
+            <div class="col-sm-3 border_left_dashed" id="doneTitle">
+              <h2>Done: <span class="replace"></span></h2>
+            </div>
+
+          </div>       
+          
+        </div>
+        
+
+        
+      <!-- Body Row End -->
+
+    </div>
+    <!-- Parent Wrap End-->      
+    
+
+    <!-- Start Game Modal-->
+    <div id="startGameModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Game Setup</h4>
+            </div>
+
+            <div class="modal-body">
+              <form action="/action_page.php">
+                <p>
+                  Number of Players:
+                  <input type="text" id="numPlayersDesired" value="6">
+                </p>
+
+                <p>
+                  Number of Cards Per Player:
+                  <input type="text" id="numCardsDesired" value="4">
+                </p>
+              </form> 
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" id="submitNames" data-dismiss="modal">Start</button>
+            </div>
+
+          </div>
+        
+        </div>
+    </div>
+    <!-- Start Game Modal End-->
+
+    <!-- Roll Dice Modal -->
+    <div id="rollModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Game Setup</h4>
+            </div>
+
+            <div class="modal-body">
+              <p>
+                You rolled a <span class="rollAmount"></span>!<br>
+                <span class="rollAmount"></span> units of work will be applied to <span id="cardToApplyWork"></span>.
+              </p>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" id="finishTurn" data-dismiss="modal">Finish Turn</button>
+            </div>
+
+          </div>
+        
+        </div>
+    </div>
+    <!-- Roll Dice Modal End-->
+
+    <!-- End Turn Modal -->
+    <div id="endTurnModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">A new day is starting</h4>
+            </div>
+
+            <div class="modal-body">
+              <p id="contentInsert">
+              </p>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" id="startDay" data-dismiss="modal">Start Day</button>
+            </div>
+
+          </div>
+        
+        </div>
+    </div>
+    <!-- End Turn Modal End-->
+
+  </body>
+</html>

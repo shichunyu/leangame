@@ -1,0 +1,119 @@
+body {
+	background-color: gray;
+}
+
+h1 {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 14pt;
+}
+
+div {
+	border: 0px;
+	border-color: red;
+	border-style: solid;
+}
+
+div.left {
+	float: top;
+}
+
+div.header {
+	align-items: center;
+}
+
+div.stateHeading {
+	height: 10%;
+}
+
+div.overfow {
+	overflow-y: auto;
+}
+
+div.height_swimlane {
+	height: 300px;
+}
+
+div.border_bottom {
+	border-bottom: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+div.border_top {
+	border-top: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+div.border_left {
+	border-left: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+div.border_left_dashed {
+	border-left: 1px;
+	border-style: dashed;
+	border-color: black;
+}
+
+div.white {
+	background-color: white;
+}
+
+div.blue {
+	background-color: #add8e6;
+}
+
+div.card {
+	width: 150px;
+	border: 1px;
+	border-style: solid;
+	border-color: red;	
+	background-color: white;
+	display: block;
+	margin: 5px auto;
+}
+
+div.card span.cardID {
+	color: gray;
+	font-family: Consolas, monaco, monospace;
+	float: right;
+}
+
+div.card span.blocked {
+	color: red;
+	font-weight: bold;
+}
+
+div.card span.normalPriority {
+	color: green;
+	font-weight: bold;
+}
+
+div.card span.urgentPriority {
+	color: red;
+	font-weight: bold;
+}
+
+div.card span.fixedDatePriority {
+	color: blue;
+	font-weight: bold;
+}
+
+button.btnMargin{
+	margin: 5px 5px 5px 5px;
+}
+
+button.right{
+	float: right;
+	margin-right: 10px;
+}
+
+span.replace{
+	color: blue;
+}
