@@ -27,11 +27,25 @@ function refreshCards() {
 
 	for (i=0; i<backlogCollection.length; i++) {
 		var targetCard = backlogCollection[i];
+		var cardNum = backlogCollection[i].id;
 		$(cardCode).appendTo('div#backlog');
-		// $('#null').attr('id',cardNum);
-		// $('div#' + cardNum + ' span.owner').append('Player ' + targetCard.owner);
-		// $('div#' + cardNum + ' span.cardID').append(targetCard.id);
-		// $('div#' + cardNum + ' span.priority').html(targetCard.priority).addClass(priorityClass);	
+		$('#null').attr('id',cardNum);
+		$('div#' + cardNum + ' span.owner').append('Player ' + targetCard.owner);
+		$('div#' + cardNum + ' span.cardID').append(targetCard.id);
+
+		switch (targetCard.priority) {
+			case 'normal': 
+				priorityClass = 'normalPriority';
+				break;
+			case 'urgent': 
+				priorityClass = 'urgentPriority';
+				break;
+			case 'fixed date': 
+				priorityClass = 'fixedDatePriority';
+				break;
+		};
+
+		$('div#' + cardNum + ' span.priority').html(targetCard.priority).addClass(priorityClass);	
 		
 	};
 

@@ -14,13 +14,10 @@ var c = 0; // counter to avoid inside loop overwriting cards
 			backlogCollection[a].id = lastCardID;
 			lastCardID++;
 
-				// Debug
-				console.log('inner loop ran')
 		};
 
-		c = c+4
-			// Debug
-				console.log('outer loop ran')
+		c = c + Number(numCardsDesiredPer);
+
 	};
 
 		// Debug
@@ -35,6 +32,9 @@ function generateSwimlanes() {
 	for (i=0; i<numPlayers; i++) {
 		var a = i+1;
 		var b = i+2
+
+
+		$('')
 
 		$('#bigColumn2').append(swimlanesCode);
 		$('#bigColumn2 > div:nth-child('+b+')').attr('id','player_'+a+'swimlane');
